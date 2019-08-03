@@ -1,7 +1,5 @@
 from iconservice import *
 from .exceptions import *
-from .interfaces import *
-from .utils import *
 
 TAG = 'PriceFeed'
 
@@ -65,12 +63,6 @@ class PriceFeed(IconScoreBase):
         # Update the price
         self._value.set(value)
         self._timestamp.set(self.now())
-
-        # Ask to recalculate the price on the medianizer
-        medianizer_score = self.create_interface_score(
-            self._medianizer_score.get(),
-            MedianizerInterface)
-        medianizer_score.poke()
 
     @external
     def set_medianizer_score(self, score: Address) -> None:

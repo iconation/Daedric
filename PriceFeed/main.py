@@ -28,7 +28,7 @@ class PriceFeed(IconScoreBase):
         self._value = VarDB(self._VALUE, db, value_type=int)
         self._timestamp = VarDB(self._TIMESTAMP, db, value_type=int)
 
-    def on_install(self, medianizer_score: Address) -> None:
+    def on_install(self) -> None:
         super().on_install()
         self._value.set(0)
         self._timestamp.set(0)
@@ -68,10 +68,6 @@ class PriceFeed(IconScoreBase):
     @external(readonly=True)
     def get_owner(self) -> str:
         return str(self.owner)
-
-    @external(readonly=True)
-    def medianizer_score(self) -> str:
-        return str(self._medianizer_score.get())
 
     # ================================================
     #  Private methods

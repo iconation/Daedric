@@ -14,8 +14,6 @@ class PriceFeed(IconScoreBase):
     _VALUE = "VALUE"
     # The timestamp of the latest retrieved value
     _TIMESTAMP = "TIMESTAMP"
-    # Score address of the Medianizer
-    _MEDIANIZER_SCORE = "MEDIANIZER_SCORE"
 
     # ================================================
     #  Error codes
@@ -29,14 +27,11 @@ class PriceFeed(IconScoreBase):
         super().__init__(db)
         self._value = VarDB(self._VALUE, db, value_type=int)
         self._timestamp = VarDB(self._TIMESTAMP, db, value_type=int)
-        self._medianizer_score = VarDB(self._MEDIANIZER_SCORE, db,
-                                       value_type=Address)
 
     def on_install(self, medianizer_score: Address) -> None:
         super().on_install()
         self._value.set(0)
         self._timestamp.set(0)
-        self._medianizer_score.set(medianizer_score)
 
     def on_update(self) -> None:
         super().on_update()
@@ -53,6 +48,7 @@ class PriceFeed(IconScoreBase):
     # ================================================
     @external
     def post(self, value: int) -> None:
+        """ Set a new price to the feed. It replaces the previous one."""
         # ==========================
         # Input Checks
         try:
@@ -64,19 +60,9 @@ class PriceFeed(IconScoreBase):
         self._value.set(value)
         self._timestamp.set(self.now())
 
-    @external
-    def set_medianizer_score(self, score: Address) -> None:
-        # ==========================
-        # Input Checks
-        try:
-            self._check_is_score_operator(self.msg.sender)
-        except SenderNotScoreOwner:
-            revert(self._SENDER_NOT_SCORE_OWNER)
-
-        self._medianizer_score.set(score)
-
     @external(readonly=True)
     def peek(self) -> str:
+        """ Get the current price stored in the price feed."""
         return json_dumps(self._to_dict())
 
     @external(readonly=True)
@@ -93,6 +79,5 @@ class PriceFeed(IconScoreBase):
     def _to_dict(self) -> dict:
         return {
             'value': self._value.get(),
-            'timestamp': self._timestamp.get(),
-            'medianizer_score': str(self._medianizer_score.get())
+            'timestamp': self._timestamp.get()
         }

@@ -1,7 +1,3 @@
-# ================================================
-#  Exceptions
-# ================================================
-
 
 class SenderNotScoreOwner(Exception):
-    pass
+    message = 'SENDER_NOT_SCORE_OWNER'

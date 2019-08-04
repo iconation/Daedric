@@ -14,11 +14,8 @@ class PriceFeed(IconScoreBase):
     _VALUE = "VALUE"
     # The timestamp of the latest retrieved value
     _TIMESTAMP = "TIMESTAMP"
-
-    # ================================================
-    #  Error codes
-    # ================================================
-    _SENDER_NOT_SCORE_OWNER = 'SENDER_NOT_SCORE_OWNER'
+    # Ticker name (for display purpose)
+    _TICKER_NAME = 'TICKER_NAME'
 
     # ================================================
     #  Initialization
@@ -27,11 +24,13 @@ class PriceFeed(IconScoreBase):
         super().__init__(db)
         self._value = VarDB(self._VALUE, db, value_type=int)
         self._timestamp = VarDB(self._TIMESTAMP, db, value_type=int)
+        self._ticker_name = VarDB(self._TICKER_NAME, db, value_type=str)
 
-    def on_install(self) -> None:
+    def on_install(self, ticker_name: str) -> None:
         super().on_install()
         self._value.set(0)
         self._timestamp.set(0)
+        self._ticker_name = ticker_name
 
     def on_update(self) -> None:
         super().on_update()
@@ -53,12 +52,27 @@ class PriceFeed(IconScoreBase):
         # Input Checks
         try:
             self._check_is_score_operator(self.msg.sender)
-        except SenderNotScoreOwner:
-            revert(self._SENDER_NOT_SCORE_OWNER)
+        except (SenderNotScoreOwner) as error:
+            revert(error.message)
 
         # Update the price
         self._value.set(value)
         self._timestamp.set(self.now())
+
+    @external
+    def set_ticker_name(self, ticker_name: str) -> None:
+        # ==========================
+        # Input Checks
+        try:
+            self._check_is_score_operator(self.msg.sender)
+        except (SenderNotScoreOwner) as error:
+            revert(error.message)
+
+        # ==========================
+        # Process
+        self._ticker_name.set(ticker_name)
+
+    # ==== ReadOnly methods =============================================
 
     @external(readonly=True)
     def peek(self) -> str:
@@ -66,8 +80,9 @@ class PriceFeed(IconScoreBase):
         return json_dumps(self._to_dict())
 
     @external(readonly=True)
-    def get_owner(self) -> str:
-        return str(self.owner)
+    def ticker_name(self) -> str:
+        """ Return the ticker name of the price feed """
+        return self._ticker_name.get()
 
     # ================================================
     #  Private methods
@@ -75,5 +90,6 @@ class PriceFeed(IconScoreBase):
     def _to_dict(self) -> dict:
         return {
             'value': self._value.get(),
-            'timestamp': self._timestamp.get()
+            'timestamp': self._timestamp.get(),
+            'ticker_name': self._ticker_name.get()
         }

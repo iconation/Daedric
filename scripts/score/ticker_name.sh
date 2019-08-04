@@ -14,7 +14,7 @@ function process {
         print_usage
     fi
 
-    command="tbears call <(python ./scripts/score/dynamic_call/get_owner.py "${network}") 
+    command="tbears call <(python ./scripts/score/dynamic_call/ticker_name.py "${network}") 
             -c ./config/${network}/tbears_cli_config.json"
 
     txresult=$(./scripts/icon/call.sh -n "${network}" -c "${command}")

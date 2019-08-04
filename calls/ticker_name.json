@@ -6,7 +6,7 @@
         "to": "xxx", 
         "dataType": "call",
         "data": {
-            "method": "get_owner"
+            "method": "ticker_name"
         }
     }
 }

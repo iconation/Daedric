@@ -11,7 +11,7 @@
 
 ## Introduction
 
-Daedric is a price feed designed to be a component required for a price oracle running on ICON to work. The Daedric SCORE operator can update and share a price associated with a ticker symbol at any time. Once deployed, the Daedric SCORE operator may subscribe its SCORE to a price oracle (such as [Hylian](https://github.com/iconation/Hylian)) in order to take part of the price consensus needed for the oracle to work in a decentralized manner.
+**Daedric** is a price feed designed to be a component required for a price oracle running on ICON to work. The Daedric SCORE operator can update and share a price associated with a ticker symbol at any time. Once deployed, the Daedric SCORE operator may subscribe its SCORE to a price oracle (such as [Hylian](https://github.com/iconation/Hylian)) in order to take part of the price consensus needed for the oracle to work in a decentralized manner.
 
 ## Prerequisites
 

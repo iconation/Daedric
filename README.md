@@ -115,7 +115,7 @@ tbears start -c ./config/localhost/tbears_server_config.json
 
 - Fill the `-n` option corresponding to the network where your SCORE is deployed to: `localhost`, `yeouido`, `euljiro` or `mainnet`.
 
-- **Example** : Given a ICX price of $0.10, 10000000000000000000 loops (10 ICX) are required to have 1 USD. So the request to the price feed should be the following :
+- **Example** :
 <pre>$ ./scripts/score/peek.sh -n localhost</pre>
 
 This command shall return the following result:

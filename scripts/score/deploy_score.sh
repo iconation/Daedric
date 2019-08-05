@@ -5,18 +5,18 @@
 function print_usage {
     usage_header ${0}
     usage_option " -n <network> : Network to use (localhost, yeouido, euljiro or mainnet)"
-    usage_option " -a <medianizer score> : SCORE address of the Medianizer"
+    usage_option " -t <ticker name> : Standardized name for the ticker (such as ICXUSD)"
     usage_footer
     exit 1
 }
 
 function process {
-    if [[ ("$network" == "") || ("$score" == "") ]]; then
+    if [[ ("$network" == "") || ("$ticker" == "") ]]; then
         print_usage
     fi
 
     command="tbears deploy $(get_package_name)
-            -c <(python ./scripts/score/dynamic_call/deploy.py ${network} ${score})"
+            -c <(python ./scripts/score/dynamic_call/deploy.py ${network} ${ticker})"
 
     txresult=$(./scripts/icon/txresult.sh -n "${network}" -c "${command}")
     exitcode=$?
@@ -33,13 +33,13 @@ function process {
 }
 
 # Parameters
-while getopts "n:a:" option; do
+while getopts "n:t:" option; do
     case "${option}" in
         n)
             network=${OPTARG}
             ;;
-        a)
-            score=${OPTARG}
+        t)
+            ticker=${OPTARG}
             ;;
         *)
             print_usage 

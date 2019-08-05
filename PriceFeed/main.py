@@ -30,7 +30,7 @@ class PriceFeed(IconScoreBase):
         super().on_install()
         self._value.set(0)
         self._timestamp.set(0)
-        self._ticker_name = ticker_name
+        self._ticker_name.set(ticker_name)
 
     def on_update(self) -> None:
         super().on_update()
@@ -78,11 +78,6 @@ class PriceFeed(IconScoreBase):
     def peek(self) -> str:
         """ Get the current price stored in the price feed."""
         return json_dumps(self._to_dict())
-
-    @external(readonly=True)
-    def ticker_name(self) -> str:
-        """ Return the ticker name of the price feed """
-        return self._ticker_name.get()
 
     # ================================================
     #  Private methods

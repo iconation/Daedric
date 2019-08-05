@@ -59,6 +59,8 @@ tbears start -c ./config/localhost/tbears_server_config.json
 
 ## Update an already deployed Daedric to localhost, testnet or mainnet
 
+- If you modified the Daedric SCORE source code, you may need to update it.
+
 - In the root folder of the project, run the following command:
 <pre>$ ./scripts/score/update_score.sh</pre>
 

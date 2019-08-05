@@ -43,14 +43,14 @@ tbears start -c ./config/localhost/tbears_server_config.json
 <pre>./scripts/score/deploy_score.sh</pre>
 
 - It should display the following usage:
-<pre>
+```
 > Usage:
  `-> ./scripts/score/deploy_score.sh [options]
 
 > Options:
  -n <network> : Network to use (localhost, yeouido, euljiro or mainnet)
  -t <ticker name> : Standardized name for the ticker (such as ICXUSD)
-</pre>
+```
 
 - Fill the `-n` option corresponding to the network you want to deploy to: `localhost`, `yeouido`, `euljiro` or `mainnet`.
 - Fill the `-t` option with the name of the ticker, such as `ICXUSD`. Note that ticker name needs to be the same than the deployed [Medianizer SCORE](https://github.com/iconation/Medianizer).
@@ -63,13 +63,13 @@ tbears start -c ./config/localhost/tbears_server_config.json
 <pre>$ ./scripts/score/update_score.sh</pre>
 
 - It should display the following usage:
-<pre>
+```
 > Usage:
  `-> ./scripts/score/update_score.sh [options]
 
 > Options:
  -n <network> : Network to use (localhost, yeouido, euljiro or mainnet)
-</pre>
+```
 
 - Fill the `-n` option corresponding to the network where your SCORE is deployed to: `localhost`, `yeouido`, `euljiro` or `mainnet`.
 
@@ -84,14 +84,14 @@ tbears start -c ./config/localhost/tbears_server_config.json
 <pre>$ ./scripts/score/post.sh</pre>
 
 - It should display the following usage:
-<pre>
+```
 > Usage:
  `-> ./scripts/score/post.sh [options]
 
 > Options:
  -n <network> : Network to use (localhost, yeouido, euljiro or mainnet)
  -p <price value> : Price to be updated
-</pre>
+```
 
 - Fill the `-n` option corresponding to the network where your SCORE is deployed to: `localhost`, `yeouido`, `euljiro` or `mainnet`.
 - Fill the `-p` option with the price (in loops). Please make sure of the format of the price with the Medianizer SCORE operator. For instance for the `ICXUSD`, the price value needs to be the amount of **loops** for 1 USD.
@@ -105,13 +105,13 @@ tbears start -c ./config/localhost/tbears_server_config.json
 <pre>$ ./scripts/score/peek.sh</pre>
 
 - It should display the following usage:
-<pre>
+```
 > Usage:
  `-> ./scripts/score/peek.sh [options]
 
 > Options:
  -n <network> : Network to use (localhost, yeouido, euljiro or mainnet)
-</pre>
+```
 
 - Fill the `-n` option corresponding to the network where your SCORE is deployed to: `localhost`, `yeouido`, `euljiro` or `mainnet`.
 
@@ -119,7 +119,7 @@ tbears start -c ./config/localhost/tbears_server_config.json
 <pre>$ ./scripts/score/peek.sh -n localhost</pre>
 
 This command shall return the following result:
-<pre>
+```
 > Command:
 $ tbears call <(python ./scripts/score/dynamic_call/peek.py localhost) -c ./config/localhost/tbears_cli_config.json
 
@@ -128,4 +128,5 @@ $ response : {
     "jsonrpc": "2.0",
     "result": "{\"value\": 10000000000000000000, \"timestamp\": 1565044831817071, \"ticker_name\": \"ICXUSD\"}",
     "id": 1
-}</pre>
+}
+```

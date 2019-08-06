@@ -1,6 +1,7 @@
 {
     "uri": "https://ctz.solidwallet.io/api/v3",
     "nid": "0x1",
+    "password": "",
     "keyStore": "./config/mainnet/keystores/operator.icx",
     "to": "cx0000000000000000000000000000000000000000",
     "deploy": {

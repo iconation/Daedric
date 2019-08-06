@@ -1,14 +1,14 @@
 #!/bin/bash
 
-function getKeystorePath {
+function getOperatorKeystorePath {
     network=${1}
     echo "./config/${network}/keystores/operator.icx"
 }
 
-function generateKeystore {
+function generateOperatorKeystore {
     network=${1}
     echo -e "\n===[${network}]===================================="
-    keystore=$(getKeystorePath ${network})
+    keystore=$(getOperatorKeystorePath ${network})
     # Check if file exists
     if [ -f "$keystore" ]; then
         echo "Operator wallet is already generated for ${network}."
@@ -21,7 +21,8 @@ function generateKeystore {
 
 # Generate keystores
 # localhost should be pre-generated
-# generateKeystore "localhost"
-generateKeystore "yeouido"
-generateKeystore "euljiro"
-generateKeystore "mainnet"
+
+# generateOperatorKeystore "localhost"
+generateOperatorKeystore "yeouido"
+generateOperatorKeystore "euljiro"
+generateOperatorKeystore "mainnet"

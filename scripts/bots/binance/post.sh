@@ -5,36 +5,25 @@
 function print_usage {
     usage_header ${0}
     usage_option " -n <network> : Network to use (localhost, yeouido, euljiro or mainnet)"
-    usage_option " -p <price value> : Price to be updated"
     usage_option " [-s <keystore password>] : The keystore password (optional)"
     usage_footer
     exit 1
 }
 
 function process {
-    if [[ ("$network" == "") || ("$price" == "") ]]; then
+    if [[ ("$network" == "") ]]; then
         print_usage
     fi
 
-    command="tbears sendtx <(python ./scripts/score/dynamic_call/post.py ${network} ${price}) 
-            -c ./config/${network}/tbears_cli_config.json"
-    
-    if [[ ("$password" != "") ]]; then
-        command="$(echo ${command}) -p ${password}"
-    fi
-
-    txresult=$(./scripts/icon/txresult.sh -n "${network}" -c "${command}")
-    echo -e "${txresult}"
+    price=$(./scripts/bots/binance/main.py)
+    ./scripts/score/post.sh -n "${network}" -p "${price}" -s "${password}"
 }
 
 # Parameters
-while getopts "n:p:s:" option; do
+while getopts "n:s:" option; do
     case "${option}" in
         n)
             network=${OPTARG}
-            ;;
-        p)
-            price=${OPTARG}
             ;;
         s)
             password=${OPTARG}

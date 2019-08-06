@@ -132,3 +132,7 @@ $ response : {
     "id": 1
 }
 ```
+
+## Update automatically the price feed using a built-in price feed bot
+
+Daedric is released with multiple ways to retrieve prices. The Daedric operator is encouraged to build its own price feed bot, but using a generated one is fine too.

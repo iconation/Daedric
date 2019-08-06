@@ -15,8 +15,11 @@ function process {
         print_usage
     fi
 
-    price=$(./scripts/bots/coinmarketcap/main.py)
-    ./scripts/score/post.sh -n "${network}" -p "${price}" -s "${password}"
+    price=$(./scripts/bots/velic/icxusd/main.py)
+
+    if [ $price -ne 0 ] ; then
+        ./scripts/score/post.sh -n "${network}" -p "${price}" -s "${password}"
+    fi
 }
 
 # Parameters

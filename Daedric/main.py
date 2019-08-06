@@ -1,11 +1,11 @@
 from iconservice import *
 from .exceptions import *
 
-TAG = 'PriceFeed'
+TAG = 'Daedric'
 
 
-class PriceFeed(IconScoreBase):
-    """ PriceFeed SCORE Base implementation """
+class Daedric(IconScoreBase):
+    """ Daedric SCORE Base implementation """
 
     # ================================================
     #  DB Variables

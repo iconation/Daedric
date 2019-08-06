@@ -14,7 +14,8 @@ class Daedric(IconScoreBase):
     _VALUE = "VALUE"
     # The timestamp of the latest retrieved value
     _TIMESTAMP = "TIMESTAMP"
-    # Ticker name (for display purpose)
+    # Ticker name, it needs to be the same than the medianizer
+    # if you want to participate to the consensus
     _TICKER_NAME = 'TICKER_NAME'
 
     # ================================================

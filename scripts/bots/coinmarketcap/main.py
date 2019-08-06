@@ -2,10 +2,10 @@
 import requests
 import json
 
-TICKER = "ICXUSDT"
-URL = "https://api.binance.com/api/v1/ticker/24hr?symbol=%s" % TICKER
+TICKER = "icon"
+URL = "https://api.coinmarketcap.com/v1/ticker/%s/" % TICKER
 
 if __name__ == '__main__':
     result = json.loads(requests.get(URL).text)
-    price = float(result["lastPrice"])
+    price = float(result[0]["price_usd"])
     print(int(1 / price * 10**18))

@@ -13,6 +13,16 @@
 
 **Daedric** is a price feed designed to be a component required for a price oracle running on ICON to work. The Daedric SCORE operator can update and share a price associated with a ticker symbol at any time. Once deployed, the Daedric SCORE operator may subscribe its SCORE to a price oracle (such as [Hylian](https://github.com/iconation/Hylian)) in order to take part of the price consensus needed for the oracle to work in a decentralized manner.
 
+## Table of Contents
+
+  * [Prerequisites](https://github.com/iconation/Daedric#prerequisites)
+  * [Installation](https://github.com/iconation/Daedric#installation)
+  * [Deploy Daedric SCORE to localhost, testnet or mainnet](https://github.com/iconation/Daedric#deploy-daedric-score-to-localhost-testnet-or-mainnet)
+  * [Update an already deployed Daedric to localhost, testnet or mainnet](https://github.com/iconation/Daedric#update-an-already-deployed-daedric-to-localhost-testnet-or-mainnet)
+  * [Post a new price to the feed](https://github.com/iconation/Daedric#post-a-new-price-to-the-feed)
+  * [Read the values from a Daedric SCORE](https://github.com/iconation/Daedric#read-the-values-from-a-daedric-score)
+  * [Update the price feed using a built-in price bot](https://github.com/iconation/Daedric#update-the-price-feed-using-a-built-in-price-bot)
+
 ## Prerequisites
 
 - **[T-Bears](https://github.com/icon-project/t-bears/)** should be installed

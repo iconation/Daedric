@@ -2,7 +2,9 @@
 
 function getOperatorKeystorePath {
     network=${1}
-    echo "./config/${network}/keystores/operator.icx"
+    path="./config/${network}/keystores"
+    mkdir -p ${path}
+    echo "${path}/operator.icx"
 }
 
 function generateOperatorKeystore {

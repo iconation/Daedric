@@ -133,6 +133,33 @@ $ response : {
 }
 ```
 
-## Update automatically the price feed using a built-in price feed bot
+## Update the price feed using a built-in price bot
 
-Daedric is released with multiple ways to retrieve prices. The Daedric operator is encouraged to build its own price feed bot, but using a generated one is fine too.
+Daedric is released with multiple built-in ways to retrieve prices.
+The Daedric operator is encouraged to build its own price bot in order to avoid a situation where all price feed operators fail to retrieve a price from the same source.
+In the meantime, using a built-in one is fine too.
+
+The price bots are located in [./scripts/bots](./scripts/bots).
+They all work the same way, for example the Binance one:
+
+<pre>
+./scripts/bots/binance/icxusd/post.sh
+</pre>
+
+```
+> Usage:
+ `-> ./scripts/bots/binance/icxusd/post.sh [options]
+
+> Options:
+ -n <network> : Network to use (localhost, yeouido, euljiro or mainnet)
+ [-s <keystore password>] : The keystore password (optional)
+```
+
+You may call this script regularly (using a cron job for exemple) with the `-n` and the `-s` switches filled accordingly.
+Make sure the cron job is launched from the root directory of Daedric, otherwise the bot won't work.
+
+**Example** using a cron job that launches the script every hour:
+
+```
+0 * * * * cd ~/Daedric/ && ./scripts/bots/binance/icxusd/post.sh -n mainnet -s mysecretpassword
+```

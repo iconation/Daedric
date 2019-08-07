@@ -66,10 +66,12 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * `./scripts/score/deploy_score.sh -n yeouido -t ICXUSD`
   * Install your price bot:
     * `crontab -e`
-    * Add a new line : `0 * * * *    cd /path/to/Daedric && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
+    * Add a new line : 
+      * `0 * * * *    cd /path/to/Daedric && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
   * Test your Daedric SCORE by manually calling the script:
     * `./scripts/bots/equalizer/icxusd/post.sh -n yeouido`
-  * Check the value of your feed using the ICON Yeouido tracker : https://bicon.tracker.solidwallet.io/contract/contract_address
+  * Check the value of your feed using the ICON Yeouido tracker : 
+    * https://bicon.tracker.solidwallet.io/contract/contract_address
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet
 

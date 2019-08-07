@@ -73,7 +73,7 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
   * Install your price bot:
     * `crontab -e`
     * Add a new line : 
-      * `0 * * * *    cd /path/to/Daedric && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
+      * `0 * * * *    cd /path/to/Daedric && source venv/bin/activate && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
   * If everything is working as intended, **please share your SCORE address** with [@Spl3en](https://t.me/Spl3en), so your SCORE can be added to [Hylian](https://github.com/iconation/Hylian) (price oracle).
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet

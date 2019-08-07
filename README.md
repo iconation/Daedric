@@ -17,6 +17,7 @@
 
   * [Prerequisites](https://github.com/iconation/Daedric#prerequisites)
   * [Installation](https://github.com/iconation/Daedric#installation)
+  * [Quick start](https://github.com/iconation/Daedric#quick-start)
   * [Deploy Daedric SCORE to localhost, testnet or mainnet](https://github.com/iconation/Daedric#deploy-daedric-score-to-localhost-testnet-or-mainnet)
   * [Update an already deployed Daedric to localhost, testnet or mainnet](https://github.com/iconation/Daedric#update-an-already-deployed-daedric-to-localhost-testnet-or-mainnet)
   * [Post a new price to the feed](https://github.com/iconation/Daedric#post-a-new-price-to-the-feed)
@@ -46,6 +47,29 @@ tbears start -c ./config/localhost/tbears_server_config.json
 
 - A wallet for localhost development is already pre-generated.
 - If you correctly loaded T-bears using the configuration as described in the prerequisites, `tbears balance hxba2e54b54b695085f31ff1a9b33868b5aea44e33` should return some balance.
+
+## Quick Start
+
+Here is a checklist you will need to follow in order to deploy your first Daedric SCORE to the Yeouido testnet:
+
+  * Install prerequisites:
+    * `pip install tbears`
+    * `sudo apt install jq`
+  * Clone the Daedric repository:
+    * `git clone https://github.com/iconation/Daedric.git && cd Daedric`
+  * Install the operator wallets:
+    * `./install.sh`
+    * Input 3 passwords for each network
+  * Send few ICX (20 ICX should be enough) to the Yeouido wallet (the address is displayed in the `install.sh` script)
+    * Contact @Spl3en if you need some testnet ICX
+  * Deploy your SCORE to the testnet:
+    * `./scripts/score/deploy_score.sh -n yeouido -t ICXUSD`
+  * Install your price bot:
+    * `crontab -e`
+    * Add a new line : `0 * * * *    cd /path/to/Daedric && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
+  * Test your Daedric SCORE by manually calling the script:
+    * `./scripts/bots/equalizer/icxusd/post.sh -n yeouido`
+  * Check the value of your feed using the ICON Yeouido tracker : https://bicon.tracker.solidwallet.io/contract/contract_address
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet
 

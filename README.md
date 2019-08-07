@@ -72,6 +72,7 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * `./scripts/bots/equalizer/icxusd/post.sh -n yeouido`
   * Check the value of your feed using the ICON Yeouido tracker : 
     * https://bicon.tracker.solidwallet.io/contract/contract_address
+  * If everything is working as intended, **please share your SCORE address** with [@Spl3en](https://t.me/Spl3en), so your SCORE can be added to [Hylian](https://github.com/iconation/Hylian) (price oracle).
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet
 

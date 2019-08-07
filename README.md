@@ -53,6 +53,7 @@ tbears start -c ./config/localhost/tbears_server_config.json
 Here is a checklist you will need to follow in order to deploy your first Daedric SCORE to the Yeouido testnet:
 
   * Install prerequisites:
+    * `python3 -m venv ./venv && source ./venv/bin/activate`
     * `pip install tbears`
     * `sudo apt install jq`
   * Clone the Daedric repository:

@@ -60,7 +60,7 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
   * Install the operator wallets:
     * `./install.sh`
     * Input 3 passwords for each network
-  * Send few ICX (20 ICX should be enough) to the Yeouido wallet (the address is displayed in the `install.sh` script)
+  * Send few ICX (20 ICX should be enough) to the Yeouido wallet (the newly generated address is displayed after executing the `install.sh` script)
     * Contact [@Spl3en](https://t.me/Spl3en) if you need some testnet ICX
   * Deploy your SCORE to the testnet:
     * `./scripts/score/deploy_score.sh -n yeouido -t ICXUSD`

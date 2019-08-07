@@ -63,7 +63,7 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * `./install.sh`
     * Input 3 passwords for each network
   * Send few ICX (20 ICX should be enough) to the Yeouido wallet (the newly generated address is displayed after executing the `install.sh` script)
-    * Contact [@Spl3en](https://t.me/Spl3en) if you need some testnet ICX
+    * Use the [faucet](http://icon-faucet.ibriz.ai/) or contact [@Spl3en](https://t.me/Spl3en) if you need some testnet ICX
   * Deploy your SCORE to the testnet:
     * `./scripts/score/deploy_score.sh -n yeouido -t ICXUSD`
   * Install your price bot:

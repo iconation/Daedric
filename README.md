@@ -173,3 +173,5 @@ Make sure the cron job is launched from the root directory of Daedric, otherwise
 ```
 0 * * * * cd ~/Daedric/ && ./scripts/bots/binance/icxusd/post.sh -n mainnet -s mysecretpassword
 ```
+
+Alternatively, you can fill the keystore password in the configuration file (`config/mainnet/tbears_cli_config.json`).

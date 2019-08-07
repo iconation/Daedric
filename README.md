@@ -66,14 +66,14 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * Use the [faucet](http://icon-faucet.ibriz.ai/) or contact [@Spl3en](https://t.me/Spl3en) if you need some testnet ICX
   * Deploy your SCORE to the testnet:
     * `./scripts/score/deploy_score.sh -n yeouido -t ICXUSD`
-  * Install your price bot:
-    * `crontab -e`
-    * Add a new line : 
-      * `0 * * * *    cd /path/to/Daedric && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
   * Test your Daedric SCORE by manually calling the script:
     * `./scripts/bots/equalizer/icxusd/post.sh -n yeouido`
   * Check the value of your feed using the ICON Yeouido tracker : 
     * https://bicon.tracker.solidwallet.io/contract/contract_address
+  * Install your price bot:
+    * `crontab -e`
+    * Add a new line : 
+      * `0 * * * *    cd /path/to/Daedric && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
   * If everything is working as intended, **please share your SCORE address** with [@Spl3en](https://t.me/Spl3en), so your SCORE can be added to [Hylian](https://github.com/iconation/Hylian) (price oracle).
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet

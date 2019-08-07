@@ -57,6 +57,8 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * `sudo apt install jq`
   * Clone the Daedric repository:
     * `git clone https://github.com/iconation/Daedric.git && cd Daedric`
+  * Start tbears using the `start_tbears.sh` script located at the root folder of the Daedric repository
+    * `./start_tbears.sh`
   * Install the operator wallets:
     * `./install.sh`
     * Input 3 passwords for each network

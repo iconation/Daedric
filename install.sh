@@ -17,7 +17,7 @@ function generateOperatorKeystore {
     else
         echo "Generating operator keystore for ${network} ..."
         tbears keystore ${keystore}
-        echo "New address generated : $(cat ./config/yeouido/keystores/operator.icx | jq '.address')"
+        echo "New address generated : $(cat ${keystore} | jq '.address')"
     fi
     echo -e "===[/${network}]====================================\n"
 }

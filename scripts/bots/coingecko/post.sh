@@ -15,13 +15,7 @@ function process {
         print_usage
     fi
 
-    # Calculate the arithmetic mean value of all the available sources
-    price=$(./scripts/bots/equalizer/icxusd/main.py           \
-            $(./scripts/bots/binance/icxusd/main.py)          \
-            $(./scripts/bots/coinmarketcap/icxusd/main.py)    \
-            $(./scripts/bots/velic/icxusd/main.py)            \
-            $(./scripts/bots/coingecko/icxusd/main.py)        \
-    )
+    price=$(./scripts/bots/coingecko/icxusd/main.py)
 
     if [ $price -ne 0 ] ; then
         ./scripts/score/post.sh -n "${network}" -p "${price}" -s "${password}"
@@ -38,9 +32,9 @@ while getopts "n:s:" option; do
             password=${OPTARG}
             ;;
         *)
-            print_usage 
+            print_usage
             ;;
-    esac 
+    esac
 done
 shift $((OPTIND-1))
 

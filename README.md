@@ -27,7 +27,8 @@
 ## Prerequisites
 
 - **[T-Bears](https://github.com/icon-project/t-bears/)** should be installed
-- **T-Bears needs to be launched using the configuration file** provided in this repository :
+- You need to clone the Daedric folder (`git clone git@github.com:iconation/Daedric.git && cd Daedric`)
+- **T-Bears needs to be launched using the configuration file** provided in the Daedric repository :
 <pre>
 tbears start -c ./config/localhost/tbears_server_config.json
 </pre>

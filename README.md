@@ -51,6 +51,7 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * https://bicon.tracker.solidwallet.io/contract/<your_contract_address>
   * Install your price bot (Marvin):
     * Follow the instructions in the [Marvin repository](https://github.com/rhizomeicx/marvin/blob/master/README.md)
+  * If everything is working as intended, please share your SCORE address with [@Spl3en](https://t.me/Spl3en), so your SCORE can be added to [Hylian](https://github.com/iconation/Hylian) (price oracle).
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet
 

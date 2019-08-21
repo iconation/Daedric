@@ -15,39 +15,12 @@
 
 ## Table of Contents
 
-  * [Prerequisites](https://github.com/iconation/Daedric#prerequisites)
-  * [Installation](https://github.com/iconation/Daedric#installation)
   * [Quick start](https://github.com/iconation/Daedric#quick-start)
   * [Deploy Daedric SCORE to localhost, testnet or mainnet](https://github.com/iconation/Daedric#deploy-daedric-score-to-localhost-testnet-or-mainnet)
   * [Update an already deployed Daedric to localhost, testnet or mainnet](https://github.com/iconation/Daedric#update-an-already-deployed-daedric-to-localhost-testnet-or-mainnet)
   * [Post a new price to the feed](https://github.com/iconation/Daedric#post-a-new-price-to-the-feed)
   * [Read the values from a Daedric SCORE](https://github.com/iconation/Daedric#read-the-values-from-a-daedric-score)
   * [Update the price feed using a built-in price bot](https://github.com/iconation/Daedric#update-the-price-feed-using-a-built-in-price-bot)
-
-## Prerequisites
-
-- **[T-Bears](https://github.com/icon-project/t-bears/)** should be installed
-- You need to clone the Daedric folder (`git clone git@github.com:iconation/Daedric.git && cd Daedric`)
-- **T-Bears needs to be launched using the configuration file** provided in the Daedric repository :
-<pre>
-tbears start -c ./config/localhost/tbears_server_config.json
-</pre>
-
-- You also need `jq`. Install it with `sudo apt-get install jq`
-
-## Installation
-
-- Run the **`install.sh` script** located in the root folder of the repository;
-
-- It will generate 3 operator wallets : 
-  - A first one on the Yeouido network in `./config/yeouido/keystores/operator.icx`
-  - A second one on the Euljiro network in `./config/euljiro/keystores/operator.icx`
-  - A last one on the Mainnet network in `./config/mainnet/keystores/operator.icx`
-
-- Make sure to send some funds to these wallets before deploying a SCORE (20 ICX should be good enough).
-
-- A wallet for localhost development is already pre-generated.
-- If you correctly loaded T-bears using the configuration as described in the prerequisites, `tbears balance hxba2e54b54b695085f31ff1a9b33868b5aea44e33` should return some balance.
 
 ## Quick Start
 
@@ -63,20 +36,21 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * `./start_tbears.sh`
   * Install the operator wallets:
     * `./install.sh`
-    * Input 3 passwords for each network
+    * It will generate 3 operator wallets : 
+      * A first one on the Yeouido network in `./config/yeouido/keystores/operator.icx`
+      * A second one on the Euljiro network in `./config/euljiro/keystores/operator.icx`
+      * A last one on the Mainnet network in `./config/mainnet/keystores/operator.icx`
+    * Input a password for each network
   * Send few ICX (20 ICX should be enough) to the Yeouido wallet (the newly generated address is displayed after executing the `install.sh` script)
-    * Use the [faucet](http://icon-faucet.ibriz.ai/) or contact [@Spl3en](https://t.me/Spl3en) if you need some testnet ICX
+    * If you don't have some testnet ICX, use the [faucet](http://icon-faucet.ibriz.ai/) or contact [@Spl3en](https://t.me/Spl3en)
   * Deploy your SCORE to the testnet:
     * `./scripts/score/deploy_score.sh -n yeouido -t ICXUSD`
-  * Test your Daedric SCORE by manually calling the script:
+  * Test your Daedric SCORE by manually calling the following script:
     * `./scripts/bots/equalizer/icxusd/post.sh -n yeouido`
   * Check the value of your feed using the ICON Yeouido tracker : 
-    * https://bicon.tracker.solidwallet.io/contract/contract_address
-  * Install your price bot:
-    * `crontab -e`
-    * Add a new line : 
-      * `0 * * * *    cd /path/to/Daedric && source venv/bin/activate && ./scripts/bots/equalizer/icxusd/post.sh -n yeouido -s [your keystore password]`
-  * If everything is working as intended, **please share your SCORE address** with [@Spl3en](https://t.me/Spl3en), so your SCORE can be added to [Hylian](https://github.com/iconation/Hylian) (price oracle).
+    * https://bicon.tracker.solidwallet.io/contract/<your_contract_address>
+  * Install your price bot (Marvin):
+    * Follow the instructions in the [Marvin repository](https://github.com/rhizomeicx/marvin/blob/master/README.md)
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet
 

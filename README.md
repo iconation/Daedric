@@ -3,6 +3,11 @@
     src="https://iconation.team/images/very_small.png" 
     width="120px"
     alt="ICONation logo">
+  X
+  <img 
+    src="https://iconation.team/images/daedric_nobg.png" 
+    width="200px"
+    alt="ICONation logo">
 </p>
 
 <h1 align="center">Daedric : Price Feed SCORE</h1>

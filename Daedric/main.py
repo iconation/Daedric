@@ -1,7 +1,25 @@
+# -*- coding: utf-8 -*-
+
+# Copyright 2019 ICONation
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 from iconservice import *
-from .exceptions import *
+from .version import *
+from .checks import *
 
 TAG = 'Daedric'
+VERSION = '1.1.0'
 
 
 class Daedric(IconScoreBase):
@@ -32,58 +50,41 @@ class Daedric(IconScoreBase):
         self._value.set(0)
         self._timestamp.set(0)
         self._ticker_name.set(ticker_name)
+        Version.set(self.db, VERSION)
 
     def on_update(self) -> None:
         super().on_update()
-
-    # ================================================
-    #  Checks
-    # ================================================
-    def _check_is_score_operator(self, address: Address) -> None:
-        if self.owner != address:
-            raise SenderNotScoreOwner
+        Version.set(self.db, VERSION)
 
     # ================================================
     #  External methods
     # ================================================
     @external
+    @only_owner
+    @catch_error
     def post(self, value: int) -> None:
         """ Set a new price to the feed. It replaces the previous one."""
-        # ==========================
-        # Input Checks
-        try:
-            self._check_is_score_operator(self.msg.sender)
-        except (SenderNotScoreOwner) as error:
-            revert(error.message)
-
-        # Update the price
         self._value.set(value)
         self._timestamp.set(self.now())
 
     @external
+    @only_owner
+    @catch_error
     def set_ticker_name(self, ticker_name: str) -> None:
-        # ==========================
-        # Input Checks
-        try:
-            self._check_is_score_operator(self.msg.sender)
-        except (SenderNotScoreOwner) as error:
-            revert(error.message)
-
-        # ==========================
-        # Process
+        """ Set a new ticker name. It replaces the previous one."""
         self._ticker_name.set(ticker_name)
 
     # ==== ReadOnly methods =============================================
-
     @external(readonly=True)
-    def peek(self) -> str:
-        """ Get the current price stored in the price feed."""
-        return json_dumps(self._to_dict())
+    @catch_error
+    def peek(self) -> dict:
+        """ Get the current Daedric state."""
+        return self._serialize()
 
     # ================================================
     #  Private methods
     # ================================================
-    def _to_dict(self) -> dict:
+    def _serialize(self) -> dict:
         return {
             'value': self._value.get(),
             'timestamp': self._timestamp.get(),

@@ -16,3 +16,5 @@ config/localhost/score_address.txt
 
 *.code-workspace
 scripts/bots/daedric_bot.icx
+.vscode
+venv

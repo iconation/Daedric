@@ -15,9 +15,7 @@
 # limitations under the License.
 
 from iconservice import *
-
-
-TAG = 'Hylian'
+from .constants import *
 
 
 # ================================================

@@ -47,7 +47,7 @@ class Version(object):
 
     @staticmethod
     def get(db: IconScoreDatabase) -> str:
-        Version._version(db).get()
+        return Version._version(db).get()
 
     @staticmethod
     def is_less_than_target_version(last: str, target: str) -> bool:

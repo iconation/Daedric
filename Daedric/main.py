@@ -17,9 +17,7 @@
 from iconservice import *
 from .version import *
 from .checks import *
-
-TAG = 'Daedric'
-VERSION = '1.1.0'
+from .constants import *
 
 
 class Daedric(IconScoreBase):
@@ -88,5 +86,6 @@ class Daedric(IconScoreBase):
         return {
             'value': self._value.get(),
             'timestamp': self._timestamp.get(),
-            'ticker_name': self._ticker_name.get()
+            'ticker_name': self._ticker_name.get(),
+            'version': Version.get(self.db)
         }

@@ -183,10 +183,11 @@ They all work the same way, for example the Binance one:
 You may call this script regularly (using a cron job for exemple) with the `-n` and the `-s` switches filled accordingly.
 Make sure the cron job is launched from the root directory of Daedric, otherwise the bot won't work.
 
-**Example** using a cron job that launches the script every hour:
+**Example** using a cron job that launches the script located in `/home/daedric/Daedric` every hour:
 
 ```
-0 * * * * cd ~/Daedric/ && ./scripts/bots/binance/icxusd/post.sh -n mainnet -s mysecretpassword
+SHELL=/bin/bash
+0 * * * * cd /home/daedric/Daedric && . /home/daedric/venv/bin/activate && ./scripts/bots/equalizer/icxusd/post.sh -n mainnet -s my_secret_keystore_password
 ```
 
 Alternatively, you can fill the keystore password in the configuration file (`config/mainnet/tbears_cli_config.json`).

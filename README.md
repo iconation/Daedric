@@ -53,8 +53,9 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * `./scripts/bots/equalizer/icxusd/post.sh -n yeouido`
   * Check the value of your feed using the ICON Yeouido tracker : 
     * https://bicon.tracker.solidwallet.io/contract/<your_contract_address>
-  * Install your price bot (Marvin):
-    * Follow the instructions in the [Marvin repository](https://github.com/rhizomeicx/marvin/blob/master/README.md)
+  * Install your price bot (Builtin or Marvin):
+    * Builtin : follow the instructions in the [Update the price feed using a built-in price bot](https://github.com/iconation/Daedric#update-the-price-feed-using-a-built-in-price-bot) section;
+    * Marvin: Follow the instructions in the [Marvin repository](https://github.com/rhizomeicx/marvin/blob/master/README.md)
   * If everything is working as intended, please share your SCORE address with [@Spl3en](https://t.me/Spl3en), so your SCORE can be added to [Hylian](https://github.com/iconation/Hylian) (price oracle).
 
 ## Deploy Daedric SCORE to localhost, testnet or mainnet
@@ -157,7 +158,11 @@ $ response : {
 
 Daedric is released with multiple built-in ways to retrieve prices.
 The Daedric operator is encouraged to build its own price bot in order to avoid a situation where all price feed operators fail to retrieve a price from the same source.
-In the meantime, using a built-in one is fine too.
+
+Rhizome made [Marvin](https://github.com/rhizomeicx/marvin/), a .NET Daedric bot.
+It is recommanded to use it if you aren't familiar with `crontab`.
+
+You can also use the one provided in this repository :
 
 The price bots are located in [./scripts/bots](./scripts/bots).
 They all work the same way, for example the Binance one:

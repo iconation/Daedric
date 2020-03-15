@@ -7,6 +7,11 @@ function getOperatorKeystorePath {
     echo "${path}/operator.icx"
 }
 
+function getOperatorKeystorePassword {
+    network=${1}
+    echo $(cat ./config/${network}/keystores/operator.password.txt)
+}
+
 function generateOperatorKeystore {
     network=${1}
     echo -e "\n===[${network}]===================================="
@@ -18,9 +23,9 @@ function generateOperatorKeystore {
         echo "Operator wallet is already generated for ${network}."
     else
         echo "Generating operator keystore for ${network} ..."
-        tbears keystore -p $(cat ./config/${network}/keystores/operator.password.txt) ${keystore}
+        tbears keystore -p $(getOperatorKeystorePassword ${network}) ${keystore}
         echo "New address generated :"
-        tbears keyinfo -p $(cat ./config/${network}/keystores/operator.password.txt) ${keystore}
+        tbears keyinfo -p $(getOperatorKeystorePassword ${network}) ${keystore}
     fi
     echo -e "===[/${network}]====================================\n"
 }

@@ -58,7 +58,7 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     
   * Once you've successfully deployed Daedric on TestNet **(optional)**, deploy your SCORE to the MainNet **(required)** :
     * `./scripts/score/deploy_score.sh -n mainnet -t ICXUSD`
-    * Please note that this command sometimes displays an error even when the SCORE has been successfully deployed, for an unknown error. If that happens to you, please check for the contract address in the tracker : tracker.icon.foundation/address/<operator_hx_address> . Also, once you retrieved the SCORE address, write it into `./config/mainnet/score_address.txt`.
+    * Please note that this command sometimes displays an error even when the SCORE has been successfully deployed, for an unknown reason. If that happens to you, please check for the contract address in the tracker : tracker.icon.foundation/address/<operator_hx_address> . Also, once you retrieved the SCORE address, write it into `./config/mainnet/score_address.txt`.
   * The ICON team may take 3-4 working days for approving your SCORE. Please remain patient, and come back here once your SCORE has been approved!
   * Test your Daedric SCORE by manually calling the following script:
     * `./scripts/bots/equalizer/icxusd/post.sh -n mainnet`

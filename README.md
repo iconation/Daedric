@@ -47,12 +47,24 @@ Here is a checklist you will need to follow in order to deploy your first Daedri
     * Input a password for each network
   * Send few ICX (20 ICX should be enough) to the Yeouido wallet (the newly generated address is displayed after executing the `install.sh` script)
     * If you don't have some testnet ICX, use the [faucet](http://icon-faucet.ibriz.ai/) or contact [@Spl3en](https://t.me/Spl3en)
-  * Deploy your SCORE to the testnet:
+   
+  * Deploy your SCORE to the testnet (optional) :
     * `./scripts/score/deploy_score.sh -n yeouido -t ICXUSD`
-  * Test your Daedric SCORE by manually calling the following script:
+  * Test your Daedric SCORE by manually calling the following script (optional) :
     * `./scripts/bots/equalizer/icxusd/post.sh -n yeouido`
-  * Check the value of your feed using the ICON Yeouido tracker : 
-    * https://bicon.tracker.solidwallet.io/contract/<your_contract_address>
+  * Check the value of your feed using the ICON Yeouido tracker (optional) : 
+    * https://bicon.tracker.solidwallet.io/contract/<your_contract_address>#readcontract
+    
+    
+  * Once you've successfully deployed Daedric on TestNet (optional), deploy your SCORE to the MainNet :
+    * `./scripts/score/deploy_score.sh -n mainnet -t ICXUSD`
+    * Please note that this command sometimes displays an error even when the SCORE has been successfully deployed, for an unknown error. If that happens to you, please check for the contract address in the tracker : tracker.icon.foundation/address/<operator_hx_address> . Also, once you retrieved the SCORE address, write it into `./config/mainnet/score_address.txt`.
+  * The ICON team may take 3-4 working days for approving your SCORE. Please remain patient, and come back here once your SCORE has been approved!
+  * Test your Daedric SCORE by manually calling the following script:
+    * `./scripts/bots/equalizer/icxusd/post.sh -n mainnet`
+  * Check the value of your feed using the ICON MainNet tracker : 
+    * https://tracker.icon.foundation/contract/<your_contract_address>#readcontract
+    
   * Install your price bot (Builtin or Marvin):
     * Builtin : follow the instructions in the [Update the price feed using a built-in price bot](https://github.com/iconation/Daedric#update-the-price-feed-using-a-built-in-price-bot) section;
     * Marvin: Follow the instructions in the [Marvin repository](https://github.com/rhizomeicx/marvin/blob/master/README.md)

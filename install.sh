@@ -11,13 +11,16 @@ function generateOperatorKeystore {
     network=${1}
     echo -e "\n===[${network}]===================================="
     keystore=$(getOperatorKeystorePath ${network})
+    password=$(< /dev/urandom tr -dc A-Z-a-z-0-9_.+*/= | head -c32)
+    echo -ne "${password}" > ./config/${network}/keystores/operator.password.txt
     # Check if file exists
     if [ -f "$keystore" ]; then
         echo "Operator wallet is already generated for ${network}."
     else
         echo "Generating operator keystore for ${network} ..."
-        tbears keystore ${keystore}
-        echo "New address generated : $(cat ${keystore} | jq '.address')"
+        tbears keystore -p $(cat ./config/${network}/keystores/operator.password.txt) ${keystore}
+        echo "New address generated :"
+        tbears keyinfo -p $(cat ./config/${network}/keystores/operator.password.txt) ${keystore}
     fi
     echo -e "===[/${network}]====================================\n"
 }
@@ -27,5 +30,6 @@ function generateOperatorKeystore {
 
 # generateOperatorKeystore "localhost"
 generateOperatorKeystore "yeouido"
-generateOperatorKeystore "euljiro"
+# Euljiro shouldn't be needed
+#generateOperatorKeystore "euljiro"
 generateOperatorKeystore "mainnet"

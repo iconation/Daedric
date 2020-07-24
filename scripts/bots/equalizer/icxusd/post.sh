@@ -18,7 +18,6 @@ function process {
     # Calculate the arithmetic mean value of all the available sources
     price=$(./scripts/bots/equalizer/icxusd/main.py           \
             $(./scripts/bots/binance/icxusd/main.py)          \
-            $(./scripts/bots/coinmarketcap/icxusd/main.py)    \
             $(./scripts/bots/velic/icxusd/main.py)            \
             $(./scripts/bots/coingecko/icxusd/main.py)        \
     )

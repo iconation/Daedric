@@ -12,10 +12,12 @@ function getOperatorKeystorePassword {
     echo $(cat ./config/${network}/keystores/operator.password.txt)
 }
 
+network="mainnet"
+keystore=$(getOperatorKeystorePath ${network})
 ./install.sh
 
 echo "If you haven't already done, send 20 ICX to this address for covering the SCORE deploy fees :"
-tbears keyinfo -p $(getOperatorKeystorePassword ${network}) ${keystore}
+tbears keyinfo -p $(getOperatorKeystorePassword "${network}") ${keystore}
 
 read -p "Press enter to continue"
 
